@@ -10,7 +10,7 @@ from at.physics import find_orbit4, find_m44, jmat
 from .harmonic_analysis import get_tunes_harmonic
 
 __all__ = ['linopt', 'avlinopt', 'get_mcf', 'get_tune',
-           'get_chrom']
+           'get_chrom', 'get_wfunctions']
 
 DDP = 1e-8
 
@@ -456,6 +456,32 @@ def get_mcf(ring, dp=0.0, ddp=DDP, keep_lattice=False):
     b = numpy.squeeze(lattice_pass(ring, fp, keep_lattice=True), axis=(2, 3))
     ring_length = get_s_pos(ring, len(ring))
     return (b[5, 1] - b[5, 0]) / ddp / ring_length[0]
+
+
+@check_radiation(False)
+def get_wfunctions(ring, **kwargs):
+    """Compute the chromatic functions as in:
+       Brian W. Montague. Linear Optics for Improved Chromaticity
+       Correction, Technical Report LEP Note 165, CERN, 1979.
+
+    PARAMETERS
+        Same as linopt expect get_chrom is set to True
+
+    OUTPUT
+        w_amp    chromatic funtion amplitude
+        w_phi    chromatic funtion phase
+    """
+    kwargs.pop('get_chrom', True)
+    _, _, _, ld = linopt(ring, get_chrom=True, **kwargs)
+    beta = ld['beta']
+    alpha = ld['alpha']
+    dbeta = ld['dbeta']
+    dalpha = ld['dalpha']
+    b = 1/beta*dbeta
+    a = dalpha - alpha/beta*dbeta
+    w_amp = numpy.sqrt(a*a+b*b)
+    w_phi = numpy.atan2(a/b)
+    return w_amp, w_phi
 
 
 @check_radiation(False)
