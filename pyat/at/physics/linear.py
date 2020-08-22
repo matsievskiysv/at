@@ -196,7 +196,7 @@ def linopt(ring, dp=0.0, refpts=None, get_chrom=False, orbit=None,
             dorbit = numpy.hstack((0.5 * ddp * disp0,
                                    numpy.array([0.5 * ddp, 0])))
             orbit_up = orbit+dorbit
-            orbit_up = orbit+dorbit
+            orbit_down = orbit-dorbit
 
     orbs = numpy.squeeze(
         lattice_pass(ring, orbit.copy(order='K'), refpts=uintrefs,
@@ -210,8 +210,8 @@ def linopt(ring, dp=0.0, refpts=None, get_chrom=False, orbit=None,
     m = m44[:2, 2:]
     n = m44[2:, :2]
 
+    # Calculate A, B, C, gamma at the first element
     if coupled:
-        # Calculate A, B, C, gamma at the first element
         H = m + _jmt.dot(n.T.dot(_jmt.T))
         t = numpy.trace(M - N)
         t2 = t * t
