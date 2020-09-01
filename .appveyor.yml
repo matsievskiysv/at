@@ -18,10 +18,13 @@ environment:
 
 install:
   - set "PATH=C:\Python%PYTHON%-x64;C:\Python%PYTHON%-x64\Scripts;%PATH%"
+  - set "SETUPTOOLS_USE_DISTUTILS=stdlib"
   - python -m virtualenv venv
   - venv\Scripts\activate
   - cd pyat
+  - easy_install --version
   - pip install --only-binary=numpy,scipy -r requirements.txt
+  - pip freeze
 
 before_build:
   - python setup.py develop
