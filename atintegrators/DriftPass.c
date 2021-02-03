@@ -1,4 +1,6 @@
-
+#include <stdlib.h>
+#include <omp.h>
+#include <limits.h>
 #include "atelem.c"
 #include "atlalib.c"
 
@@ -13,6 +15,7 @@ struct elem
   double *RApertures;
 };
 
+#include <stdio.h>
 void DriftPass(double *r_in, double le,
 	       const double *T1, const double *T2,
 	       const double *R1, const double *R2,
@@ -26,7 +29,12 @@ void DriftPass(double *r_in, double le,
   double *r6;
   int c;
   
-  #pragma omp parallel for if (num_particles > OMP_PARTICLE_THRESHOLD*10) default(shared) shared(r_in,num_particles) private(c,r6)
+  int min_particle_per_thread = getenv("MIN_PARTICLE_PER_THREAD") != NULL ?   \
+    atoi(getenv("MIN_PARTICLE_PER_THREAD")) : INT_MAX/10;
+  #pragma omp parallel for if (num_particles > 2*min_particle_per_thread) default(shared) \
+          shared(r_in,num_particles) private(c,r6) \
+          num_threads(num_particles / min_particle_per_thread > omp_get_max_threads() ? \
+                      omp_get_max_threads() : num_particles / min_particle_per_thread)
   for (c = 0; c<num_particles; c++) { /*Loop over particles  */
     r6 = r_in+c*6;
     if(!atIsNaN(r6[0])) {

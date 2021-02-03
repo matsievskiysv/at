@@ -4,6 +4,9 @@
    Created 3/11/2011
    this is modified from Terebilo's QuadLinearPass to include the quadrupole fringe field effects.
 */
+#include <stdlib.h>
+#include <omp.h>
+#include <limits.h>
 #include "atelem.c"
 #include "atlalib.c"
 
@@ -140,7 +143,12 @@ void QuadLinearFPass(double *r, double le, double kv, double I1a, double I1b,dou
 {	int c;
 	double *r6;
 
-    #pragma omp parallel for if (num_particles > OMP_PARTICLE_THRESHOLD) default(shared) shared(r,num_particles) private(c,r6)
+    int min_particle_per_thread = getenv("MIN_PARTICLE_PER_THREAD") != NULL ? \
+            atoi(getenv("MIN_PARTICLE_PER_THREAD")) : INT_MAX/10;
+    #pragma omp parallel for if (num_particles > 2*min_particle_per_thread) default(shared) \
+            shared(r,num_particles) private(c,r6) \
+            num_threads(num_particles / min_particle_per_thread > omp_get_max_threads() ? \
+                        omp_get_max_threads() : num_particles / min_particle_per_thread)
     for (c = 0;c<num_particles;c++) {
         r6 = r+c*6;
         if (!atIsNaN(r6[0]) && atIsFinite(r6[4])) {

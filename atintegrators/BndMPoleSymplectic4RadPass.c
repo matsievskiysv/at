@@ -1,3 +1,6 @@
+#include <stdlib.h>
+#include <omp.h>
+#include <limits.h>
 #include "atelem.c"
 #include "atlalib.c"
 #include "atphyslib.c"
@@ -71,7 +74,12 @@ void BndMPoleSymplectic4RadPass(double *r, double le, double irho, double *A, do
         B[0] -= sin(KickAngle[0])/le;
         A[0] += sin(KickAngle[1])/le;
     }
-    #pragma omp parallel for if (num_particles > OMP_PARTICLE_THRESHOLD) default(shared) shared(r,num_particles) private(c,r6,m)
+    int min_particle_per_thread = getenv("MIN_PARTICLE_PER_THREAD") != NULL ? \
+            atoi(getenv("MIN_PARTICLE_PER_THREAD")) : INT_MAX/10;
+    #pragma omp parallel for if (num_particles > 2*min_particle_per_thread) default(shared) \
+            shared(r,num_particles) private(c,r6,m) \
+            num_threads(num_particles / min_particle_per_thread > omp_get_max_threads() ? \
+                        omp_get_max_threads() : num_particles / min_particle_per_thread)
     for(c = 0;c<num_particles;c++)	/* Loop over particles */
     {
         r6 = r+c*6;

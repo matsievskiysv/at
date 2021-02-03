@@ -6,6 +6,9 @@
    Length, KickAngle
 */
 
+#include <stdlib.h>
+#include <omp.h>
+#include <limits.h>
 #include "atelem.c"
 
 struct elem
@@ -29,23 +32,29 @@ void CorrectorPass(double *r_in, double xkick, double ykick, double len,  int nu
    		        r_in[c6+3] += ykick; 		    
    		    }
 		}	
-	else
-        #pragma omp parallel for if (num_particles > OMP_PARTICLE_THRESHOLD*10) default(shared) shared(r_in,num_particles) private(c,c6)
-        for(c = 0;c<num_particles;c++) {
-            c6 = c*6;
-		    if(!atIsNaN(r_in[c6])) {
-		        p_norm = 1/(1+r_in[c6+4]);
-			    NormL  = len*p_norm;
-	            r_in[c6+5] += NormL*p_norm*(xkick*xkick/3 + ykick*ykick/3 +
-   		                r_in[c6+1]*r_in[c6+1] + r_in[c6+3]*r_in[c6+3] + 
-   		                r_in[c6+1]*xkick + r_in[c6+3]*ykick)/2;
+	else {
+                int min_particle_per_thread = getenv("MIN_PARTICLE_PER_THREAD") != NULL ? \
+                        atoi(getenv("MIN_PARTICLE_PER_THREAD")) : INT_MAX/10;
+                #pragma omp parallel for if (num_particles > 2*min_particle_per_thread) default(shared) \
+                        shared(r_in,num_particles) private(c,c6) \
+                        num_threads(num_particles / min_particle_per_thread > omp_get_max_threads() ? \
+                                    omp_get_max_threads() : num_particles / min_particle_per_thread)
+                for(c = 0;c<num_particles;c++) {
+                        c6 = c*6;
+                        if(!atIsNaN(r_in[c6])) {
+                                p_norm = 1/(1+r_in[c6+4]);
+                                NormL  = len*p_norm;
+                                r_in[c6+5] += NormL*p_norm*(xkick*xkick/3 + ykick*ykick/3 +
+                                                            r_in[c6+1]*r_in[c6+1] + r_in[c6+3]*r_in[c6+3] + 
+                                                            r_in[c6+1]*xkick + r_in[c6+3]*ykick)/2;
 
-			    r_in[c6]   += NormL*(r_in[c6+1]+xkick/2);
-		        r_in[c6+1] += xkick;
-		        r_in[c6+2] += NormL*(r_in[c6+3]+ykick/2);
-   		        r_in[c6+3] += ykick;
-   		    }
+                                r_in[c6]   += NormL*(r_in[c6+1]+xkick/2);
+                                r_in[c6+1] += xkick;
+                                r_in[c6+2] += NormL*(r_in[c6+3]+ykick/2);
+                                r_in[c6+3] += ykick;
+                        }
 		}	
+        }
 }
 
 #if defined(MATLAB_MEX_FILE) || defined(PYAT)
