@@ -10,8 +10,8 @@ function varargout=trackMultipleParticles(varargin)
 %TRACKMULTIPLEPARTICLES(...,'nturns',nturns)
 %   Set the number of turns (default 500)
 
-[nparticles,varargs]=getoption(varargin,'nparticles',500);
-[nturns,~]=getoption(varargin,'nturns',500);
+[nparticles,varargs]=getoption(varargin,'nparticles',1000);
+[nturns,~]=getoption(varargin,'nturns',1000);
 % Load the hmba lattice
 
 a=load(fullfile(atroot,'../pyat/test_matlab/hmba.mat'));

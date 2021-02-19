@@ -1,0 +1,112 @@
+Threads: 1; scheduler: auto; without: 41.094750; with: 93.570297
+Threads: 1; scheduler: runtime; without: 41.124538; with: 93.551292
+Threads: 1; scheduler: dynamic; without: 41.193223; with: 93.622985
+Threads: 1; scheduler: dynamic, 1; without: 41.081181; with: 93.623150
+Threads: 1; scheduler: dynamic, 10; without: 41.115012; with: 93.541439
+Threads: 1; scheduler: dynamic, 50; without: 41.108501; with: 93.516766
+Threads: 1; scheduler: guided; without: 41.093511; with: 93.517246
+Threads: 1; scheduler: guided, 1; without: 41.184863; with: 93.509602
+Threads: 1; scheduler: guided, 10; without: 41.073673; with: 93.578728
+Threads: 1; scheduler: guided, 50; without: 41.063633; with: 93.653116
+Threads: 1; scheduler: static; without: 41.132970; with: 93.633632
+Threads: 1; scheduler: static, 1; without: 41.174867; with: 93.552507
+Threads: 1; scheduler: static, 10; without: 41.066126; with: 93.556541
+Threads: 1; scheduler: static, 50; without: 41.104421; with: 93.569520
+Threads: 2; scheduler: auto; without: 22.440643; with: 48.447745
+Threads: 2; scheduler: runtime; without: 22.386693; with: 48.376142
+Threads: 2; scheduler: dynamic; without: 22.365113; with: 48.334634
+Threads: 2; scheduler: dynamic, 1; without: 22.358346; with: 48.245775
+Threads: 2; scheduler: dynamic, 10; without: 22.387820; with: 48.431120
+Threads: 2; scheduler: dynamic, 50; without: 22.299129; with: 48.368665
+Threads: 2; scheduler: guided; without: 22.339308; with: 48.371771
+Threads: 2; scheduler: guided, 1; without: 22.381899; with: 48.394480
+Threads: 2; scheduler: guided, 10; without: 22.365255; with: 48.278726
+Threads: 2; scheduler: guided, 50; without: 22.365315; with: 48.336012
+Threads: 2; scheduler: static; without: 22.377855; with: 48.329847
+Threads: 2; scheduler: static, 1; without: 22.387195; with: 48.331544
+Threads: 2; scheduler: static, 10; without: 22.348174; with: 48.367689
+Threads: 2; scheduler: static, 50; without: 22.359445; with: 48.536083
+Threads: 3; scheduler: auto; without: 16.252564; with: 33.927969
+Threads: 3; scheduler: runtime; without: 16.310509; with: 34.007583
+Threads: 3; scheduler: dynamic; without: 16.245503; with: 33.967469
+Threads: 3; scheduler: dynamic, 1; without: 16.233726; with: 33.861127
+Threads: 3; scheduler: dynamic, 10; without: 16.241780; with: 33.825736
+Threads: 3; scheduler: dynamic, 50; without: 16.306862; with: 33.982385
+Threads: 3; scheduler: guided; without: 16.236273; with: 33.880617
+Threads: 3; scheduler: guided, 1; without: 16.216404; with: 33.966730
+Threads: 3; scheduler: guided, 10; without: 16.214937; with: 33.892086
+Threads: 3; scheduler: guided, 50; without: 16.311325; with: 34.013933
+Threads: 3; scheduler: static; without: 16.294717; with: 33.927497
+Threads: 3; scheduler: static, 1; without: 16.278703; with: 33.871577
+Threads: 3; scheduler: static, 10; without: 16.262156; with: 33.898777
+Threads: 3; scheduler: static, 50; without: 16.215758; with: 33.885709
+Threads: 4; scheduler: auto; without: 13.300006; with: 26.560588
+Threads: 4; scheduler: runtime; without: 13.323289; with: 26.555472
+Threads: 4; scheduler: dynamic; without: 13.302545; with: 26.590167
+Threads: 4; scheduler: dynamic, 1; without: 13.340342; with: 26.560994
+Threads: 4; scheduler: dynamic, 10; without: 13.331874; with: 26.563814
+Threads: 4; scheduler: dynamic, 50; without: 13.334218; with: 26.560435
+Threads: 4; scheduler: guided; without: 13.295582; with: 26.599634
+Threads: 4; scheduler: guided, 1; without: 13.299150; with: 26.604619
+Threads: 4; scheduler: guided, 10; without: 13.293643; with: 26.555146
+Threads: 4; scheduler: guided, 50; without: 13.335877; with: 26.548492
+Threads: 4; scheduler: static; without: 13.305607; with: 26.558805
+Threads: 4; scheduler: static, 1; without: 13.282537; with: 26.572269
+Threads: 4; scheduler: static, 10; without: 13.300252; with: 26.570697
+Threads: 4; scheduler: static, 50; without: 13.301207; with: 26.643188
+Threads: 5; scheduler: auto; without: 12.386144; with: 29.540187
+Threads: 5; scheduler: runtime; without: 12.401396; with: 29.556132
+Threads: 5; scheduler: dynamic; without: 12.388597; with: 29.526599
+Threads: 5; scheduler: dynamic, 1; without: 12.407054; with: 29.534178
+Threads: 5; scheduler: dynamic, 10; without: 12.431925; with: 29.531940
+Threads: 5; scheduler: dynamic, 50; without: 12.399377; with: 29.565760
+Threads: 5; scheduler: guided; without: 12.518300; with: 29.525647
+Threads: 5; scheduler: guided, 1; without: 12.378622; with: 29.549601
+Threads: 5; scheduler: guided, 10; without: 12.400387; with: 29.523392
+Threads: 5; scheduler: guided, 50; without: 12.375695; with: 29.540210
+Threads: 5; scheduler: static; without: 12.394867; with: 29.529170
+Threads: 5; scheduler: static, 1; without: 13.083272; with: 30.242660
+Threads: 5; scheduler: static, 10; without: 12.410171; with: 29.539248
+Threads: 5; scheduler: static, 50; without: 12.413469; with: 29.533152
+Threads: 6; scheduler: auto; without: 11.545527; with: 25.778838
+Threads: 6; scheduler: runtime; without: 11.569452; with: 25.780104
+Threads: 6; scheduler: dynamic; without: 11.576372; with: 25.805004
+Threads: 6; scheduler: dynamic, 1; without: 10.824807; with: 25.115437
+Threads: 6; scheduler: dynamic, 10; without: 11.585463; with: 25.792869
+Threads: 6; scheduler: dynamic, 50; without: 11.582839; with: 25.230655
+Threads: 6; scheduler: guided; without: 10.792490; with: 25.757026
+Threads: 6; scheduler: guided, 1; without: 10.831971; with: 25.106116
+Threads: 6; scheduler: guided, 10; without: 10.804721; with: 25.093630
+Threads: 6; scheduler: guided, 50; without: 10.795678; with: 25.018638
+Threads: 6; scheduler: static; without: 11.631932; with: 25.804182
+Threads: 6; scheduler: static, 1; without: 10.821150; with: 25.089599
+Threads: 6; scheduler: static, 10; without: 11.575111; with: 25.785209
+Threads: 6; scheduler: static, 50; without: 10.839957; with: 25.114841
+Threads: 7; scheduler: auto; without: 10.296543; with: 22.079555
+Threads: 7; scheduler: runtime; without: 10.291341; with: 22.588215
+Threads: 7; scheduler: dynamic; without: 9.833800; with: 22.593838
+Threads: 7; scheduler: dynamic, 1; without: 10.410561; with: 22.604898
+Threads: 7; scheduler: dynamic, 10; without: 9.825143; with: 22.578361
+Threads: 7; scheduler: dynamic, 50; without: 10.351250; with: 22.594995
+Threads: 7; scheduler: guided; without: 10.357232; with: 22.590871
+Threads: 7; scheduler: guided, 1; without: 10.392313; with: 22.562236
+Threads: 7; scheduler: guided, 10; without: 10.402209; with: 22.601390
+Threads: 7; scheduler: guided, 50; without: 10.395254; with: 22.584128
+Threads: 7; scheduler: static; without: 10.261362; with: 22.608875
+Threads: 7; scheduler: static, 1; without: 10.352363; with: 22.579687
+Threads: 7; scheduler: static, 10; without: 10.397114; with: 22.589497
+Threads: 7; scheduler: static, 50; without: 10.130244; with: 22.563682
+Threads: 8; scheduler: auto; without: 9.849189; with: 20.780402
+Threads: 8; scheduler: runtime; without: 9.757277; with: 21.007943
+Threads: 8; scheduler: dynamic; without: 9.778353; with: 20.794042
+Threads: 8; scheduler: dynamic, 1; without: 9.880556; with: 21.524655
+Threads: 8; scheduler: dynamic, 10; without: 9.896923; with: 20.809880
+Threads: 8; scheduler: dynamic, 50; without: 9.839897; with: 20.889483
+Threads: 8; scheduler: guided; without: 9.737595; with: 20.878243
+Threads: 8; scheduler: guided, 1; without: 9.832280; with: 20.857365
+Threads: 8; scheduler: guided, 10; without: 9.752736; with: 20.800669
+Threads: 8; scheduler: guided, 50; without: 9.942065; with: 20.873494
+Threads: 8; scheduler: static; without: 9.804984; with: 22.185326
+Threads: 8; scheduler: static, 1; without: 10.333156; with: 20.732816
+Threads: 8; scheduler: static, 10; without: 9.841217; with: 20.862175
+Threads: 8; scheduler: static, 50; without: 9.985457; with: 20.737194
